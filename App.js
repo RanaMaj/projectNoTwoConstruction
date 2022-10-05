@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import OnBOrdingScreen from './src/screens/onBordingScreen/onBording';
+
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <OnBOrdingScreen />
       <StatusBar style="auto" />
-    </View>
+    </View >
   );
 }
 
