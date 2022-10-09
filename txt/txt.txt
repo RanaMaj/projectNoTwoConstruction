@@ -1,0 +1,67 @@
+const data = [
+    {
+        id: '1',
+        iconImage: require('../../../assets/images/icon1.png'),
+        subTitle: 'التعريف بقطاع المقاولات'
+    },
+    {
+        id: '2',
+        iconImage: require('../../../assets/images/icon2.png'),
+        subTitle: 'متطلبات تأسيس منشاة مقاولات'
+    },
+    {
+        id: '3',
+        iconImage: require('../../../assets/images/icon3.png'),
+        subTitle: 'تراخيص مزاولة نشاط المقاولات'
+    },
+    {
+        id: '4',
+        iconImage: require('../../../assets/images/icon4.png'),
+        subTitle: ' قواعد وإجراءات أساسية بشأن التعاقد '
+    },
+    {
+        id: '5',
+        iconImage: require('../../../assets/images/icon5.png'),
+        subTitle: 'الجهات ذات العلاقة  '
+    },
+    {
+        id: '6',
+        iconImage: require('../../../assets/images/icon6.png'),
+        subTitle: 'منصات الكترونية في خدمة المقاول'
+    },
+    {
+        id: '7',
+
+        iconImage: require('../../../assets/images/icon7.png'),
+        subTitle: 'خطة عمل المشروعات وتدفقاتها المالية'
+    },
+    {
+        id: '8',
+
+        iconImage: require('../../../assets/images/icon8.png'),
+        subTitle: 'آليات تسليم مشاريع المقاولات'
+    },
+    {
+        id: '9',
+
+        iconImage: require('../../../assets/images/icon9.png'),
+        subTitle: 'أنظمة عقود المقاولات '
+    },
+    {
+        id: '10',
+        iconImage: require('../../../assets/images/icon10.png'),
+        subTitle: 'علاقة  المقاول مع مكاتب وإجراءات السلامة'
+    },
+    {
+        id: '11',
+
+        iconImage: require('../../../assets/images/icon11.png'),
+        subTitle: 'الجانب الاجتماعي والوطني '
+    },
+    {
+        id: '12',
+
+        iconImage: require('../../../assets/images/icon12.png'),
+        subTitle: '\n رسالتها- أهدافها – إنجازاتها :لجنة المقاولات'
+    },
+];

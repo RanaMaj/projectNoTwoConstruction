@@ -1,5 +1,12 @@
-import { StyleSheet, View, Image, FlatList, Text, Pressable } from 'react-native'
+import {
+    StyleSheet, View, Image, FlatList, Pressable, Dimensions,
+} from 'react-native'
 import React from 'react'
+import { useState } from 'react'
+
+
+const { width, height } = Dimensions.get('window');
+
 
 const data = [
     {
@@ -12,9 +19,6 @@ const data = [
     },
 ];
 
-// const flatListItems = Array(2)
-//     .fill()
-//     .map(() => ({ imageBording: data.imageBording, id: data.id }));
 
 const Item = ({ imageBording }) => (
     <View
@@ -30,17 +34,57 @@ const Item = ({ imageBording }) => (
 
 
 const OnBOrdingScreen = () => {
+    const [currentSlideIndex, setCurrentSlideIndex] = React.useState(0);
+
+    const updateCurrentSlideIndex = (e) => {
+        const contentOffsetX = e.nativeEvent.contentOffset.x;
+        console.log(contentOffsetX);
+        const currentIndex = Math.round(contentOffsetX / width);
+        console.log(currentIndex);
+        setCurrentSlideIndex(currentIndex);
+    };
+    console.log('====================================');
+    console.log({ currentSlideIndex });
+    console.log('====================================');
+
+    const Footer = () => {
+        return (
+            <View
+                style={
+                    {
+                        height: 0.25,
+                        justifyContent: 'space-between',
+                        paddingHorizontal: 20
+                    }}>
+                <View style={
+                    {
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        marginTop: 20
+                    }
+                }>
+                    {data.map((_, index) => (
+                        <View key={index} style={[styles.indecator, currentSlideIndex == index && {
+                            backgroundColor: '#AEAEAE',
+                            width: 11,
+                        }]} />
+                    ))}
+                </View>
+            </View >
+        );
+    };
+
+
     const renderItem = ({ item }) => <Item imageBording={item.imageBording} id={item.id} />;
     const keyExtractor = (item) => item.id;
     const onScroll = (value) => {
-        console.log(value.nativeEvent);
-        console.log(value.contentOffset);
     }
     return (
         <View style={styles.container}>
             <View style={{ height: 500 }}>
                 <FlatList
                     horizontal
+                    onMomentumScrollBegin={updateCurrentSlideIndex}
                     data={data}
                     renderItem={renderItem}
                     keyExtractor={keyExtractor}
@@ -48,14 +92,7 @@ const OnBOrdingScreen = () => {
                     showsHorizontalScrollIndicator={false}
                     onScroll={onScroll}
                 />
-                <View style={styles.viewBordingBtn}>
-                    <Pressable
-                        onPress={onScroll}
-                        style={styles.btnBordingactive}
-                    />
-                    <Pressable
-                        style={styles.btnBording} />
-                </View>
+                <Footer />
             </View>
         </View>
     )
@@ -78,17 +115,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    btnBordingactive: {
+    indecator: {
+        height: 11,
+        width: 11,
         backgroundColor: '#0C0303',
-        width: 14,
-        height: 14,
-        borderRadius: 100,
-        marginHorizontal: 8
-    },
-    btnBording: {
-        backgroundColor: '#AEAEAE',
-        width: 14,
-        height: 14,
+        marginHorizontal: 3,
         borderRadius: 100,
     }
 })
