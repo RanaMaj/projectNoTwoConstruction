@@ -5,6 +5,7 @@ const AboutScreen = () => {
     return (
         <View style={styles.container}>
             <Image style={styles.image} source={require('../../../assets/images/onBordingImage2.png')}></Image>
+            
             <Text style={styles.headTitle}>من نحن</Text>
             <Text style={styles.subTitle}>نقوم بتنفيذ جميع مقاولات واعمال البناء بجميع المراحل بداية من
                 اعمال الحفر للأساسات مرورا بجميع المراحل وحتى اعمال تركيب

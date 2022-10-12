@@ -1,5 +1,6 @@
-import { FlatList, StyleSheet, Item, Text, View, Image } from 'react-native'
+import { FlatList, StyleSheet, Item, Text, View, Image, Pressable } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
 
 const dataList = [
     {
@@ -69,26 +70,34 @@ const dataList = [
     },
 ];
 
-const renderItem = ({ item }) =>
-    <View style={styles.vewCard} >
-        <View style={styles.imageContainer}>
-            <Image source={item.iconImage} style={styles.image} />
-        </View>
-        <Text style={styles.subTitle}>{item.subTitle}</Text>
-    </View>
+const RenderItem = ({ item }) => {
+    const { navigate } = useNavigation();
+    return (
+        <Pressable
+            onPress={() => navigate("ServiceDetailsScreen", { item })}
+            style={styles.vewCard}
+        >
+            <View style={styles.imageContainer}>
+                <Image source={item.iconImage} style={styles.image} />
+            </View>
+            <Text style={styles.subTitle}>{item.subTitle}</Text>
+        </Pressable>
+    );
+};
 const keyExtractor = (item) => item.id;
 
 const headerComponent = () => {
     return <Text style={styles.listHeaderline}>الفهرس</Text>
 }
 
-const HomeComponent = () => {
+const HomeComponent = ({ navigation }) => {
     return (
         <FlatList
             data={dataList}
-            renderItem={renderItem}
+            renderItem={({ item }) => <RenderItem item={item} />}
             keyExtractor={keyExtractor}
             numColumns={2}
+            onP
             ListHeaderComponent={headerComponent}
             ListHeaderComponentStyle={styles.HeaderTitle}
             ListEmptyComponent={<Text>This is a vary flat list</Text>}

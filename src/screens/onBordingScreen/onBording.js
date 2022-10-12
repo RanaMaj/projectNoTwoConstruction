@@ -1,8 +1,8 @@
 import {
-    StyleSheet, View, Image, FlatList, Pressable, Dimensions,
+    StyleSheet, View, Image, FlatList, Dimensions, Pressable, Text, Button
 } from 'react-native'
 import React from 'react'
-import { useState } from 'react'
+import { useNavigation } from '@react-navigation/native';
 
 
 const { width, height } = Dimensions.get('window');
@@ -79,6 +79,7 @@ const OnBOrdingScreen = () => {
     const keyExtractor = (item) => item.id;
     const onScroll = (value) => {
     }
+    const { navigate } = useNavigation();
     return (
         <View style={styles.container}>
             <View style={{ height: 500 }}>
@@ -94,7 +95,13 @@ const OnBOrdingScreen = () => {
                 />
                 <Footer />
             </View>
-        </View>
+            <View>
+                <Pressable
+                    style={styles.skipBtn}
+                    onPress={() => navigate("BottomStack", { screen: '' })} >
+                    <Text>Skip</Text>
+                </Pressable></View>
+        </View >
     )
 }
 
@@ -121,5 +128,16 @@ const styles = StyleSheet.create({
         backgroundColor: '#0C0303',
         marginHorizontal: 3,
         borderRadius: 100,
+    },
+    skipBtn: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        backgroundColor: '#AEAEAE',
+        width: 150,
+        height: 50,
+        marginTop: 125,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 15,
     }
 })
