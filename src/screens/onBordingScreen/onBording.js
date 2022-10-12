@@ -99,7 +99,22 @@ const OnBOrdingScreen = () => {
           showsHorizontalScrollIndicator={false}
           onScroll={onScroll}
         />
-        <Button title="go to home" onPress={() => navigate("BottomStack")} />
+        <Button
+          title="go to home"
+          onPress={() =>
+            navigate("BottomStack", {
+              screen: "HomeStack",
+              params: {
+                screen: "ServiceDetails",
+                params: {
+                  item: {
+                    subTitle: "asdasd",
+                  },
+                },
+              },
+            })
+          }
+        />
         <Footer />
       </View>
     </View>
