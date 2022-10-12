@@ -3,15 +3,13 @@ import {
   View,
   Image,
   FlatList,
-  Pressable,
   Dimensions,
   Button,
 } from "react-native";
 import React from "react";
-import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 const data = [
   {
